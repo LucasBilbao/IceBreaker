@@ -12,10 +12,6 @@ void Player::unenrol() {
   isPlaying = false;
 }
 
-void Player::updateSwitchState() {
-  switchState = digitalRead(BUTTON_PIN);
-}
-
 void Player::blink() {
   digitalWrite(GREEN_LED_PIN, LOW);
   delay(500);

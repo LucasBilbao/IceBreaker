@@ -8,14 +8,13 @@ public:
   const unsigned int RED_LED_PIN;
   const unsigned int GREEN_LED_PIN;
   const unsigned int BUTTON_PIN;
-  unsigned int switchState;
   bool isPlaying = false;
+  bool hasPlayedInRound = false;
 
   Player(unsigned int, unsigned int, unsigned int);
   
   void enrol();
   void unenrol();
-  void updateSwitchState();
   void blink();
 };
 #endif

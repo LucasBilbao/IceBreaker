@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Screen.h"
+#include "LightRing.h"
 
 #pragma once
 #ifndef Game_h
@@ -14,16 +15,19 @@ class Game {
   Player **players;
   Screen *screen;
   String *questions;
+  LightRing *ring;
 public:
   static unsigned int numOfPlayers;
   bool hasStarted = false;
 
-  Game(Player **, Screen *, String *);
+  Game(Player **, Screen *, String *, LightRing *);
   void startGame();
   void startCurrentTurn();
   void endCurrentTurn();
   void updateGame();
   void nextTurn();
   void nextRound();
+  bool hasEveryonePlayed();
+  void resetPlayers();
 };
 #endif

@@ -1,13 +1,9 @@
+#include "HardwareSerial.h"
+#include "Arduino.h"
 #include "Utiles.h"
 
-void updatePlayerSwitchStates(Player **players) {
-  for (int i = 0; i < 4; ++i) {
-    players[i]->updateSwitchState();
-  }
-}
-
 void updatePlayerEnrolment(Player *player) {
-  if (player->switchState == HIGH) {
+  if (isPressed(player->BUTTON_PIN)) {
     if (!player->isPlaying) {
       player->enrol();
       Game::numOfPlayers++;
@@ -39,4 +35,10 @@ void registerPlayerPins(Player **players) {
     pinMode(players[i]->GREEN_LED_PIN, OUTPUT);
     pinMode(players[i]->BUTTON_PIN, INPUT);
   }
+}
+
+bool isPressed(int pin) {
+  int switchState = digitalRead(pin);
+
+  return switchState == HIGH;
 }
